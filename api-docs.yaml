@@ -1,0 +1,47 @@
+definitions: {}
+info:
+  title: DCM Site Plugin REST API
+  version: '1.0'
+paths:
+  /:
+    get:
+      description: ''
+      responses:
+        '200':
+          description: OK
+      summary: Get status.
+  '/dcm_plugin/{topic}':
+    delete:
+      description: ''
+      parameters:
+        - description: topic name
+          in: path
+          name: topic
+          type: string
+      responses:
+        '200':
+          description: successful result
+        '500':
+          description: error during the execution
+      summary: Delete Kafka topic.
+    post:
+      description: ''
+      parameters:
+        - description: topic name
+          in: path
+          name: topic
+          type: string
+      responses:
+        '200':
+          description: successful result
+        '500':
+          description: error during the execution
+      summary: Create Kafka topic.
+  /spec:
+    get:
+      description: ''
+      responses:
+        swagger:
+          description: swagger specification
+      summary: Get swagger specification.
+swagger: '2.0'
