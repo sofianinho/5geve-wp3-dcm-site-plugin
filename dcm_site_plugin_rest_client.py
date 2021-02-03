@@ -61,7 +61,7 @@ def create_topic(topic):
     """
     logger.info("Request received - POST /dcm_plugin")
     try:
-        subprocess.call(['/bin/bash', kafka_topics_script_route, '--create', '--zookeeper', site_ip_address+":2181", '--replication-factor', '1', '--partitions', '1', '--topic', topic])
+        subprocess.call(['/bin/bash', kafka_topics_script_route, '--create', '--bootstrap-server', site_ip_address+":9092", '--replication-factor', '1', '--partitions', '1', '--topic', topic])
     except Exception as e:
         logger.error("Error executing command")
         logger.exception(e)
@@ -87,7 +87,7 @@ def delete_topic(topic):
     """
     logger.info("Request received - DELETE /dcm_plugin")
     try:
-        subprocess.call(['/bin/bash', kafka_topics_script_route, '--delete', '--zookeeper', site_ip_address+":2181", '--topic', topic])
+        subprocess.call(['/bin/bash', kafka_topics_script_route, '--delete', '--bootstrap-server', site_ip_address+":9092", '--topic', topic])
     except Exception as e:
         logger.error("Error executing command")
         logger.exception(e)
